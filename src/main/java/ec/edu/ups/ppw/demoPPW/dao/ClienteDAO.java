@@ -14,27 +14,35 @@ public class ClienteDAO implements Serializable {
 		@PersistenceContext
 		private EntityManager em;
 
-		public void insert(Cliente Cliente) {
-			em.persist(Cliente);
+		public void insert(Cliente cliente) {
+			em.persist(cliente);
 		}
 
-		public void update(Cliente Cliente) {
-			em.merge(Cliente);
+		public void update(Cliente cliente) {
+			em.merge(cliente);
 		}
 
 		public Cliente read(String cedula) {
-			Cliente p = em.find(Cliente.class, cedula);
-			return p;
+			Cliente c = em.find(Cliente.class, cedula);
+			return c;
 		}
 
 		public void delete(String cedula) {
-			Cliente p = em.find(Cliente.class, cedula);
-			em.remove(p);
+			Cliente c = em.find(Cliente.class, cedula);
+			em.remove(c);
 		}
 
 		public List<Cliente> getAll(){
-			String jpql = "SELECT p FROM Cliente p";
+			String jpql = "SELECT c FROM Cliente c";
 			Query q = em.createQuery(jpql);
-			return q.getResultList();
+			List<Cliente> clientes = q.getResultList();
+			for (Cliente cliente : clientes) {
+				System.out.println("Cédula: " + cliente.getCedula());
+				System.out.println("Nombre: " + cliente.getNombre());
+		        System.out.println("Apellido: " + cliente.getApellido());
+		        System.out.println("Celular: " + cliente.getCelular());
+			}
+			return clientes;
 		}
+		
 }
