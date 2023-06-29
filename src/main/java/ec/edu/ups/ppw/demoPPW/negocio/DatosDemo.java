@@ -22,13 +22,13 @@ public class DatosDemo {
 		c.setCedula("0106154362");
 		c.setApellido("Alvarado");
 		c.setNombre("Andres");
-		c.setCelular("0999252488");
+		c.setTelefono("0999252488");
 		daoCliente.insert(c);
 		Cliente c1 = new Cliente();
 		c1.setCedula("0106154370");
 		c1.setApellido("Alvarado");
 		c1.setNombre("Andrea");
-		c1.setCelular("0999252488");
+		c1.setTelefono("0999252488");
 		daoCliente.insert(c1);
 		daoCliente.getAll();
 	}
