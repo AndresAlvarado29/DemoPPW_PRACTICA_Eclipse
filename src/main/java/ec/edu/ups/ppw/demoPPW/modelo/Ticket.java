@@ -2,6 +2,7 @@ package ec.edu.ups.ppw.demoPPW.modelo;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,9 +11,13 @@ import jakarta.persistence.Id;
 public class Ticket {
 @Id
 @GeneratedValue
+@Column(name="tic_id")
 private int idTicket;
+@Column(name="tic_fecha")
 private Date fecha;
+@Column(name="tic_hora_salida")
 private Date horaSalida;
+@Column(name="tic_hora_entrada")
 private Date horaEntrada;
 public int getIdTicket() {
 	return idTicket;

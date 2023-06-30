@@ -11,6 +11,10 @@ import jakarta.persistence.Query;
 
 @Stateless
 public class ClienteDAO implements Serializable {
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		@PersistenceContext
 		private EntityManager em;
 

@@ -13,15 +13,19 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Cliente implements Serializable{
 	@Id
-	@Column(name="id_cliente")
+	@Column(name="cli_cedula")
 	private String cedula;
+	@Column(name="cli_nombre")
 	private String nombre;
+	@Column(name="cli_apellido")
 	private String apellido;
+	@Column(name="cli_telefono")
 	private String telefono;
+	@Column(name="cli_direccion")
 	private String direccion;
 	//relacion
 	@OneToMany
-	@JoinColumn(name="id_cliente")
+	@JoinColumn(name="cli_cedula")
 	private List<Vehiculo> vehiculo;
 	public String getCedula() {
 		return cedula;

@@ -18,18 +18,18 @@ public class DatosDemo {
 	public void init() {
 		System.out.println("Hola UPS");
 
-		Cliente c = new Cliente();
-		c.setCedula("0106154362");
-		c.setApellido("Alvarado");
-		c.setNombre("Andres");
-		c.setTelefono("0999252488");
-		daoCliente.insert(c);
-		Cliente c1 = new Cliente();
-		c1.setCedula("0106154370");
-		c1.setApellido("Alvarado");
-		c1.setNombre("Andrea");
-		c1.setTelefono("0999252488");
-		daoCliente.insert(c1);
-		daoCliente.getAll();
+		//Cliente c = new Cliente();
+		//c.setCedula("0106154362");
+		//c.setApellido("Alvarado");
+		//c.setNombre("Andres");
+		//c.setTelefono("0999252488");
+		//daoCliente.insert(c);
+		//Cliente c1 = new Cliente();
+//		c1.setCedula("0106154370");
+		//c1.setApellido("Alvarado");
+		//c1.setNombre("Andrea");
+	//	c1.setTelefono("0999252488");
+	//	daoCliente.insert(c1);
+	//	daoCliente.getAll();
 	}
 }

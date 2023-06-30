@@ -12,16 +12,20 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Vehiculo {
 @Id
-@Column(name="placa_vehiculo")
+@Column(name="veh_placa")
 private String placa;
+@Column(name="veh_marca")
 private String marca;
+@Column(name="veh_modelo")
 private String modelo;
+@Column(name="veh_color")
 private String color;
-@OneToMany
-@JoinColumn(name="placa_vehiculo")
-private List<Ticket> tickets;
+//relaciones
+//@OneToMany
+//@JoinColumn(name="veh_placa")
+//private List<Ticket> tickets;
 @OneToOne
-@JoinColumn(name="id_tipo")
+@JoinColumn(name="tip_id")
 private TipoVehiculo tipoVehiculo;
 public String getPlaca() {
 	return placa;

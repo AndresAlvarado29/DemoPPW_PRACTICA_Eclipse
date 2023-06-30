@@ -14,15 +14,19 @@ import jakarta.persistence.OneToMany;
 public class Parqueadero implements Serializable{
 @Id
 @GeneratedValue
-@Column(name="idParqueadero")
+@Column(name="par_id")
 private int idParqueadero;
+@Column(name="par_nombre")
 private String nombre;
+@Column(name="par_direccion")
 private String direccion;
+@Column(name="par_telefono")
 private String telefono;
+@Column(name="par_espacios")
 private int espacios;
 //relacion
 @OneToMany
-@JoinColumn(name="id_parqueadero")
+@JoinColumn(name="par_id")
 private List<Cliente> clientes;
 public int getIdParqueadero() {
 	return idParqueadero;
