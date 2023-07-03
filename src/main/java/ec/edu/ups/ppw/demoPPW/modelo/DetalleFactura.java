@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class DetalleFactura {
@@ -19,6 +21,11 @@ private String detalle;
 private double costoUnitario;
 @Column(name="det_costo_total")
 private double costoTotal;
+//relaciones
+@OneToOne
+@JoinColumn(name="tic_id")
+private Ticket ticket;
+
 public int getIdDetalle() {
 	return idDetalle;
 }
@@ -48,6 +55,18 @@ public double getCostoTotal() {
 }
 public void setCostoTotal(double costoTotal) {
 	this.costoTotal = costoTotal;
+}
+
+public Ticket getTicket() {
+	return ticket;
+}
+public void setTicket(Ticket ticket) {
+	this.ticket = ticket;
+}
+@Override
+public String toString() {
+	return "DetalleFactura [idDetalle=" + idDetalle + ", cantidad=" + cantidad + ", detalle=" + detalle
+			+ ", costoUnitario=" + costoUnitario + ", costoTotal=" + costoTotal + ", ticket=" + ticket + "]";
 }
 
 }

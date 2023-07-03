@@ -1,13 +1,16 @@
 package ec.edu.ups.ppw.demoPPW.dao;
 
 import java.io.Serializable;
+
 import java.util.List;
 
 import ec.edu.ups.ppw.demoPPW.modelo.Vehiculo;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
+@Stateless
 public class VehiculoDAO implements Serializable{
 
 	/**

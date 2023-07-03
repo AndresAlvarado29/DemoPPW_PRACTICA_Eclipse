@@ -44,4 +44,10 @@ public void setHoraEntrada(Date horaEntrada) {
 	this.horaEntrada = horaEntrada;
 }
 
+@Override
+public String toString() {
+	return "Ticket [idTicket=" + idTicket + ", fecha=" + fecha + ", horaSalida=" + horaSalida + ", horaEntrada="
+			+ horaEntrada + "]";
+}
+
 }

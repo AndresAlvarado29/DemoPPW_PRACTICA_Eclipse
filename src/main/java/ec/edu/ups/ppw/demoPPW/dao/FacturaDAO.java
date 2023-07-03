@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 import ec.edu.ups.ppw.demoPPW.modelo.Factura;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
+@Stateless
 public class FacturaDAO implements Serializable{
 
 	/**

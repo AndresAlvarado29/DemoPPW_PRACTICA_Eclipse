@@ -1,6 +1,6 @@
 package ec.edu.ups.ppw.demoPPW.modelo;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Parqueadero implements Serializable{
+public class Parqueadero{
 @Id
 @GeneratedValue
 @Column(name="par_id")
@@ -57,6 +57,25 @@ public int getEspacios() {
 }
 public void setEspacios(int espacios) {
 	this.espacios = espacios;
+}
+
+public List<Cliente> getClientes() {
+	return clientes;
+}
+public void setClientes(List<Cliente> clientes) {
+	this.clientes = clientes;
+}
+
+public void addCliente(Cliente cliente) {
+	if(clientes == null) {
+		clientes = new ArrayList<Cliente>();
+	}
+	clientes.add(cliente);
+}
+@Override
+public String toString() {
+	return "Parqueadero [idParqueadero=" + idParqueadero + ", nombre=" + nombre + ", direccion=" + direccion
+			+ ", telefono=" + telefono + ", espacios=" + espacios + ", clientes=" + clientes + "]";
 }
 
 

@@ -1,9 +1,9 @@
 package ec.edu.ups.ppw.demoPPW.modelo;
 
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Cliente implements Serializable{
+public class Cliente{
 	@Id
 	@Column(name="cli_cedula")
 	private String cedula;
@@ -23,10 +23,13 @@ public class Cliente implements Serializable{
 	private String telefono;
 	@Column(name="cli_direccion")
 	private String direccion;
-	//relacion
+	//relaciones
 	@OneToMany
 	@JoinColumn(name="cli_cedula")
-	private List<Vehiculo> vehiculo;
+	private List<Vehiculo> vehiculos;
+	@OneToMany
+	@JoinColumn(name="cli_cedula")
+	private List<Ticket> tickets;
 	public String getCedula() {
 		return cedula;
 	}
@@ -57,5 +60,35 @@ public class Cliente implements Serializable{
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+	public List<Vehiculo> getVehiculo() {
+		return vehiculos;
+	}
+	public void setVehiculo(List<Vehiculo> vehiculos) {
+		this.vehiculos = vehiculos;
+	}
+	public List<Ticket> getTickets() {
+		return tickets;
+	}
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+	public void addVehiculo(Vehiculo vehiculo) {
+		if(vehiculos == null) {
+			vehiculos = new ArrayList<Vehiculo>();
+		}
+		vehiculos.add(vehiculo);
+	}
+	public void addTicket(Ticket ticket) {
+		if(tickets == null) {
+			tickets = new ArrayList<Ticket>();
+		}
+		tickets.add(ticket);
+	}
+	@Override
+	public String toString() {
+		return "Cliente [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono
+				+ ", direccion=" + direccion + ", vehiculo=" + vehiculos + ", tickets=" + tickets + "]";
+	}
+
 
 }

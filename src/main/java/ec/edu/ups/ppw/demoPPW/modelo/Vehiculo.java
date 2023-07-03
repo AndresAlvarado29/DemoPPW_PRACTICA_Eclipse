@@ -1,13 +1,9 @@
 package ec.edu.ups.ppw.demoPPW.modelo;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+
 
 @Entity
 public class Vehiculo {
@@ -20,13 +16,9 @@ private String marca;
 private String modelo;
 @Column(name="veh_color")
 private String color;
-//relaciones
-//@OneToMany
-//@JoinColumn(name="veh_placa")
-//private List<Ticket> tickets;
-@OneToOne
-@JoinColumn(name="tip_id")
-private TipoVehiculo tipoVehiculo;
+@Column(name="tip_vehiculo")
+private String tipoVehiculo;
+
 public String getPlaca() {
 	return placa;
 }
@@ -51,6 +43,16 @@ public String getColor() {
 public void setColor(String color) {
 	this.color = color;
 }
-
+public String getTipoVehiculo() {
+	return tipoVehiculo;
+}
+public void setTipoVehiculo(String tipoVehiculo) {
+	this.tipoVehiculo = tipoVehiculo;
+}
+@Override
+public String toString() {
+	return "Vehiculo [placa=" + placa + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color
+			+ ", tipoVehiculo=" + tipoVehiculo + "]";
+}
 
 }
