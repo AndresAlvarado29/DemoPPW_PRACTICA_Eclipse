@@ -1,3 +1,3 @@
-"# DemoPPW_PRACTICA_Eclipse" 
-![ServicioWeb](imagenes/Captura.png)
-![ServicioWeben el postman](imagenes/Captura2.png)
+"# CREACION DEL SERVICIO Y PRUEBA EN EL POSTMNAN" 
+![ServicioWeb](imagenes/Captura.PNG)
+![ServicioWeben el postman](imagenes/Captura2.PNG)
