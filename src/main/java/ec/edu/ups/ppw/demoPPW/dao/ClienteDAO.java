@@ -45,6 +45,9 @@ public class ClienteDAO implements Serializable {
 				System.out.println("Nombre: " + cliente.getNombre());
 		        System.out.println("Apellido: " + cliente.getApellido());
 		        System.out.println("Celular: " + cliente.getTelefono());
+		        System.out.println("Direccion: " + cliente.getDireccion());
+		        System.out.println("Vehiculo: " + cliente.getVehiculo());
+		        System.out.println("Ticket: " + cliente.getTickets());
 			}
 			return clientes;
 		}

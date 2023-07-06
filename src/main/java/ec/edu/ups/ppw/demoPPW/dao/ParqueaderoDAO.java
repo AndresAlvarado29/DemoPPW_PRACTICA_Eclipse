@@ -3,6 +3,7 @@ package ec.edu.ups.ppw.demoPPW.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import ec.edu.ups.ppw.demoPPW.modelo.Cliente;
 import ec.edu.ups.ppw.demoPPW.modelo.Parqueadero;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -16,6 +17,7 @@ public class ParqueaderoDAO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private Parqueadero par;
 @PersistenceContext
 private EntityManager em;
 
@@ -38,4 +40,5 @@ public List<Parqueadero> getAll(){
 	Query q = em.createQuery(jpql);
 	return q.getResultList();
 }
+
 }

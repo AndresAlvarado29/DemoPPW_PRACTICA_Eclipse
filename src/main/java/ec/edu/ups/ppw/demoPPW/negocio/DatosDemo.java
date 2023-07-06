@@ -39,30 +39,37 @@ public class DatosDemo {
 	@PostConstruct
 	public void init() {
 		System.out.println("Hola UPS");
-		//parqueadero
+		/*//parqueadero
 				Parqueadero p = new Parqueadero();
 				p.setTelefono("0999252488");
 				p.setNombre("elPepe");
 				p.setEspacios(20);
 				p.setDireccion("cuenca");
-				daoParqueadero.insert(p);
+				daoParqueadero.insert(p);	*/
 				// cliente2
 				Cliente c1 = new Cliente();
-				c1.setCedula("0106154370");
-				c1.setApellido("Alvarado");
-				c1.setDireccion("Oña");
-				c1.setNombre("Andrea");
+				c1.setCedula("0105164362");
+				c1.setApellido("Gonzales");
+				c1.setDireccion("Cuenca");
+				c1.setNombre("Juan");
 				c1.setTelefono("0999252488");
 				daoCliente.insert(c1);
-				p.addCliente(c1);
-				daoParqueadero.insert(p);
+			//Parqueadero p = new Parqueadero();
+			//	p.addCliente(c1);
+			//	daoParqueadero.update(p);
+				
+					if(daoParqueadero.read(102)!=null) {
+						daoParqueadero.read(102).addCliente(c1);
+						daoParqueadero.update(daoParqueadero.read(102));
+						}
+					
 				// vehiculo del cliente 2
 				Vehiculo v1 = new Vehiculo();
-				v1.setColor("rojo");
-				v1.setPlaca("ABC-4567");
-				v1.setMarca("kamikaze");
-				v1.setModelo("npi");
-				v1.setTipoVehiculo("moto");
+				v1.setColor("blanco");
+				v1.setPlaca("AYC-0215");
+				v1.setMarca("gtx");
+				v1.setModelo("vts");
+				v1.setTipoVehiculo("triciclo");
 				c1.addVehiculo(v1);
 				// ticket vehiculo 2
 				Ticket t1 = new Ticket();
@@ -89,8 +96,9 @@ public class DatosDemo {
 				d1.setTicket(t1);
 				f1.addDetalle(d1);
 				daoFactura.insert(f1);
-				System.out.println(daoFactura.getAll());
-				
+			
+		System.out.println(daoFactura.getAll());
+		System.out.println(daoCliente.getAll());
 	
 	}
 }
