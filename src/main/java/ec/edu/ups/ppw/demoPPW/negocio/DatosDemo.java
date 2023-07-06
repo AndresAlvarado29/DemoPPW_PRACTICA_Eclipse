@@ -45,13 +45,13 @@ public class DatosDemo {
 				p.setNombre("elPepe");
 				p.setEspacios(20);
 				p.setDireccion("cuenca");
-				daoParqueadero.insert(p);	*/
+				daoParqueadero.insert(p);	
 				// cliente2
 				Cliente c1 = new Cliente();
-				c1.setCedula("0105164362");
-				c1.setApellido("Gonzales");
-				c1.setDireccion("Cuenca");
-				c1.setNombre("Juan");
+				c1.setCedula("0106515250");
+				c1.setApellido("Peralta");
+				c1.setDireccion("Quito");
+				c1.setNombre("Freddy");
 				c1.setTelefono("0999252488");
 				daoCliente.insert(c1);
 			//Parqueadero p = new Parqueadero();
@@ -65,11 +65,11 @@ public class DatosDemo {
 					
 				// vehiculo del cliente 2
 				Vehiculo v1 = new Vehiculo();
-				v1.setColor("blanco");
-				v1.setPlaca("AYC-0215");
+				v1.setColor("negro");
+				v1.setPlaca("LYC-0215");
 				v1.setMarca("gtx");
-				v1.setModelo("vts");
-				v1.setTipoVehiculo("triciclo");
+				v1.setModelo("x86");
+				v1.setTipoVehiculo("moto");
 				c1.addVehiculo(v1);
 				// ticket vehiculo 2
 				Ticket t1 = new Ticket();
@@ -98,7 +98,7 @@ public class DatosDemo {
 				daoFactura.insert(f1);
 			
 		System.out.println(daoFactura.getAll());
-		System.out.println(daoCliente.getAll());
+		System.out.println(daoCliente.getAll());*/
 	
 	}
 }

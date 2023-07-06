@@ -1,7 +1,11 @@
 package ec.edu.ups.ppw.demoPPW.negocio;
 
+import java.util.List;
+
 import ec.edu.ups.ppw.demoPPW.dao.ClienteDAO;
+import ec.edu.ups.ppw.demoPPW.dao.VehiculoDAO;
 import ec.edu.ups.ppw.demoPPW.modelo.Cliente;
+import ec.edu.ups.ppw.demoPPW.modelo.Vehiculo;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
@@ -9,8 +13,10 @@ import jakarta.inject.Inject;
 public class GestionCliente {
 	@Inject
 	private ClienteDAO clienteDAO;
+	@Inject
+	private VehiculoDAO vehiculoDAO;
 
-	public void guardarClinetes(Cliente cliente) throws Exception {
+	public void guardarClientes(Cliente cliente) throws Exception {
 		if (!this.isCedulaValida(cliente.getCedula()))
 			throw new Exception("Cedula Incorrecta");
 
@@ -33,7 +39,10 @@ public class GestionCliente {
 		return cedula.length() == 10;
 	}
 
-	public void guardarClientes(String cedula, String nombre, String direccion) {
-
+	public List<Cliente> listar() {
+		return clienteDAO.getAll();
+	}
+	public List<Vehiculo> listarVehiculos(){
+		return vehiculoDAO.getAll();
 	}
 }

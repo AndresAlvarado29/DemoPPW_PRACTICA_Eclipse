@@ -4,19 +4,29 @@ import java.util.List;
 
 import ec.edu.ups.ppw.demoPPW.dao.VehiculoDAO;
 import ec.edu.ups.ppw.demoPPW.modelo.Cliente;
+import ec.edu.ups.ppw.demoPPW.modelo.Parqueadero;
 import ec.edu.ups.ppw.demoPPW.modelo.Vehiculo;
+import ec.edu.ups.ppw.demoPPW.negocio.GestionCliente;
+import ec.edu.ups.ppw.demoPPW.negocio.GestionParqueadero;
 import jakarta.inject.Inject;
 import jakarta.persistence.Query;
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.Response;
 
 @Path("clientes")
 public class GClienteService {
 	@Inject
 	private VehiculoDAO vehiculoDAO;
+	@Inject
+	private GestionCliente gCliente;
+	@Inject
+	private GestionParqueadero gParqueadero;
 	@GET
 	@Path("saludo")
 	public String saludo() {
@@ -47,9 +57,52 @@ public class GClienteService {
 	}
 	
 	@GET
+	@Path("clientedatos")
+	@Produces("application/json")
+	public List<Cliente> clienteDatos() {
+		return gCliente.listar();
+	}
+	@GET
 	@Path("vehiculodatos")
 	@Produces("application/json")
 	public List<Vehiculo> vehiculoDatos() {
-		return vehiculoDAO.getAll();
+		return gCliente.listarVehiculos();
+	}
+	@POST
+	@Produces("application/json")
+	@Consumes("application/json")
+	public Response guardarCliente(Cliente cliente) {
+		try {
+			gCliente.guardarClientes(cliente);
+			return Response.status(Response.Status.OK).entity(cliente).build();
+		}catch (Exception e) {
+			e.printStackTrace();
+			Error error = new Error();
+			error.setCodigo(99);
+			error.setMensaje("Error al guardar:"+e.getMessage());
+			return Response.status(Response.Status.OK).entity(error).build();
+		}
+	}
+	@POST
+	@Path("crearP")
+	@Produces("application/json")
+	@Consumes("application/json")
+	public Response guardarParqueadero(Parqueadero parqueadero) {
+		try {
+			gParqueadero.guardarParqueadero(parqueadero);
+			return Response.status(Response.Status.OK).entity(parqueadero).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			Error error = new Error();
+			error.setCodigo(99);
+			error.setMensaje("Error al guardar:"+e.getMessage());
+			return Response.status(Response.Status.OK).entity(error).build();
+		}
+	}
+	@GET
+	@Path("parqueaderodatos")
+	@Produces("application/json")
+	public List<Parqueadero> parqueaderoDatos() {
+		return gParqueadero.listar();
 	}
 }

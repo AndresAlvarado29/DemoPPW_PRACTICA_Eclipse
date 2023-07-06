@@ -36,7 +36,7 @@ public class ClienteDAO implements Serializable {
 			em.remove(c);
 		}
 
-		public List<Cliente> getAll(){
+		public List<Cliente> lista(){
 			String jpql = "SELECT c FROM Cliente c";
 			Query q = em.createQuery(jpql);
 			List<Cliente> clientes = q.getResultList();
@@ -51,5 +51,12 @@ public class ClienteDAO implements Serializable {
 			}
 			return clientes;
 		}
+		public List<Cliente> getAll(){
+			String jpql = "SELECT c FROM Cliente c";
+			Query q = em.createQuery(jpql);
+			return q.getResultList();
+		}
+		
+		
 		
 }
