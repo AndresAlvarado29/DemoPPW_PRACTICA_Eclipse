@@ -34,6 +34,17 @@ public class GestionCliente {
 			}
 		}
 	}
+	public void actualizarCliente(Cliente cliente) throws Exception{
+		for (Cliente clientes : clienteDAO.getAll()) {
+			if(clientes.getCedula().equals(cliente.getCedula())) {
+				try {
+					clienteDAO.update(cliente);
+				} catch (Exception e) {
+					throw new Exception("No se encontro el id: "+ e.getMessage());
+				}
+			}
+		}
+	}
 
 	private boolean isCedulaValida(String cedula) {
 		return cedula.length() == 10;
@@ -42,6 +53,41 @@ public class GestionCliente {
 	public List<Cliente> listar() {
 		return clienteDAO.getAll();
 	}
+	//vehiculos
+
+	public void guardarVehiculos(Vehiculo vehiculo) throws Exception {
+		if (!this.isPlacaValida(vehiculo.getPlaca()))
+			throw new Exception("Placa Incorrecta");
+
+		if (vehiculoDAO.read(vehiculo.getPlaca()) == null) {
+			try {
+				vehiculoDAO.insert(vehiculo);
+			} catch (Exception e) {
+				throw new Exception("Error al insertar: " + e.getMessage());
+			}
+		} else {
+			try {
+				vehiculoDAO.update(vehiculo);
+			} catch (Exception e) {
+				throw new Exception("Error al actualizar: " + e.getMessage());
+			}
+		}
+	}
+	private boolean isPlacaValida(String placa) {
+		return placa.length() == 7;
+	}
+	public void actualizarVehiculo(Vehiculo vehiculo) throws Exception{
+		for (Vehiculo vehiculos : vehiculoDAO.getAll()) {
+			if(vehiculos.getPlaca().equals(vehiculo.getPlaca())) {
+				try {
+					vehiculoDAO.update(vehiculo);
+				} catch (Exception e) {
+					throw new Exception("No se encontro el id: "+ e.getMessage());
+				}
+			}
+		}
+	}
+	
 	public List<Vehiculo> listarVehiculos(){
 		return vehiculoDAO.getAll();
 	}

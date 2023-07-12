@@ -26,7 +26,7 @@ public void insert(Vehiculo vehiculo) {
 public void update(Vehiculo vehiculo) {
 	em.merge(vehiculo);
 }
-public Vehiculo read(int codigo) {
+public Vehiculo read(String codigo) {
 	Vehiculo v= em.find(Vehiculo.class, codigo);
 	return v;
 }

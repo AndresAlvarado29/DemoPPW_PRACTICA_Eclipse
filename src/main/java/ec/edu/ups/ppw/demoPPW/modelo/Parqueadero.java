@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -25,7 +26,7 @@ private String telefono;
 @Column(name="par_espacios")
 private int espacios;
 //relacion
-@OneToMany
+@OneToMany(fetch = FetchType.EAGER)
 @JoinColumn(name="par_id")
 private List<Cliente> clientes;
 public int getIdParqueadero() {
@@ -59,13 +60,9 @@ public void setEspacios(int espacios) {
 	this.espacios = espacios;
 }
 
-public List<Cliente> getClientes() {
+/*public List<Cliente> getClientes() {
 	return clientes;
-}
-public void setClientes(List<Cliente> clientes) {
-	this.clientes = clientes;
-}
-
+}*/
 public void addCliente(Cliente cliente) {
 	if(clientes == null) {
 		clientes = new ArrayList<Cliente>();

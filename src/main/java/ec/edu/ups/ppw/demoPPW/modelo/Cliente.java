@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -24,10 +25,10 @@ public class Cliente{
 	@Column(name="cli_direccion")
 	private String direccion;
 	//relaciones
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="cli_cedula")
 	private List<Vehiculo> vehiculos;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="cli_cedula")
 	private List<Ticket> tickets;
 	public String getCedula() {
@@ -63,14 +64,8 @@ public class Cliente{
 	public List<Vehiculo> getVehiculo() {
 		return vehiculos;
 	}
-	public void setVehiculo(List<Vehiculo> vehiculos) {
-		this.vehiculos = vehiculos;
-	}
 	public List<Ticket> getTickets() {
 		return tickets;
-	}
-	public void setTickets(List<Ticket> tickets) {
-		this.tickets = tickets;
 	}
 	public void addVehiculo(Vehiculo vehiculo) {
 		if(vehiculos == null) {

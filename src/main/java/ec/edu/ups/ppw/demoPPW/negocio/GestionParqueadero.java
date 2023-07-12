@@ -27,6 +27,17 @@ public void guardarParqueadero(Parqueadero parqueadero) throws Exception {
 		}
 	}
 }
+public void actualizarParqueadero(Parqueadero parqueadero) throws Exception{
+	for (Parqueadero parqueaderos : parqueaderoDAO.getAll()) {
+		if(parqueadero.getIdParqueadero()==parqueaderos.getIdParqueadero()) {
+			try {
+				parqueaderoDAO.update(parqueadero);
+			} catch (Exception e) {
+				throw new Exception("No se encontro el id: "+ e.getMessage());
+			}
+		}
+	}
+}
 public List<Parqueadero> listar(){
 	return parqueaderoDAO.getAll();
 }
