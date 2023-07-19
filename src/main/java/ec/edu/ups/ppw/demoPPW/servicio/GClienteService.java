@@ -11,6 +11,7 @@ import ec.edu.ups.ppw.demoPPW.negocio.GestionParqueadero;
 import jakarta.inject.Inject;
 import jakarta.persistence.Query;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -53,6 +54,7 @@ public class GClienteService {
 	}
 //servicios cliente
 	@POST
+	@Path("crearC")
 	@Produces("application/json")
 	@Consumes("application/json")
 	public Response guardarCliente(Cliente cliente) {
@@ -67,7 +69,8 @@ public class GClienteService {
 			return Response.status(Response.Status.OK).entity(error).build();
 		}
 	}
-	@POST
+	/*@POST
+	@Path("actualizarC")
 	@Produces("application/json")
 	@Consumes("application/json")
 	public Response actualizarCliente(Cliente cliente) {
@@ -81,12 +84,31 @@ public class GClienteService {
 			error.setMensaje("Error al guardar:"+e.getMessage());
 			return Response.status(Response.Status.OK).entity(error).build();
 		}
-	}
+	}*/
 	@GET
 	@Path("clientedatos")
 	@Produces("application/json")
 	public List<Cliente> clienteDatos() {
 		return gCliente.listar();
+	}
+	@DELETE
+	@Path("EliminarC/{cedula}")
+	public Response borrar(@PathParam("cedula") String cedula) {
+		boolean eliminado = gCliente.borrar(cedula);
+		if(eliminado) {
+			return Response.ok("cliente eliminado correctamente").build();
+		}else {
+			return Response.status(Response.Status.NOT_FOUND).entity("No se encontro el cliente con el ID: " + cedula).build();
+		}
+	}
+//segunda manera de obtener la lista con todos los datos
+	@GET
+	@Path("all")
+	@Produces("application/json")
+	public Response getClientes() {
+		List<Cliente> listado = gCliente.listar();
+
+		return Response.status(Response.Status.OK).entity(listado).build();
 	}
 //servicios vehiculo
 	@POST

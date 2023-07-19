@@ -34,17 +34,6 @@ public class GestionCliente {
 			}
 		}
 	}
-	public void actualizarCliente(Cliente cliente) throws Exception{
-		for (Cliente clientes : clienteDAO.getAll()) {
-			if(clientes.getCedula().equals(cliente.getCedula())) {
-				try {
-					clienteDAO.update(cliente);
-				} catch (Exception e) {
-					throw new Exception("No se encontro el id: "+ e.getMessage());
-				}
-			}
-		}
-	}
 
 	private boolean isCedulaValida(String cedula) {
 		return cedula.length() == 10;
@@ -52,6 +41,11 @@ public class GestionCliente {
 
 	public List<Cliente> listar() {
 		return clienteDAO.getAll();
+	}
+	
+	public boolean borrar(String cedula) {
+		clienteDAO.delete(cedula);
+		return true;
 	}
 	//vehiculos
 

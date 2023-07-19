@@ -61,12 +61,12 @@ public class Cliente{
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public List<Vehiculo> getVehiculo() {
+	/*public List<Vehiculo> getVehiculo() {
 		return vehiculos;
 	}
 	public List<Ticket> getTickets() {
 		return tickets;
-	}
+	}*/
 	public void addVehiculo(Vehiculo vehiculo) {
 		if(vehiculos == null) {
 			vehiculos = new ArrayList<Vehiculo>();
