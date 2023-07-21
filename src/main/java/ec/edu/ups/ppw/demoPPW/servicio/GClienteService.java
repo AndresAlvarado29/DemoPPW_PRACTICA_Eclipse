@@ -65,7 +65,7 @@ public class GClienteService {
 			e.printStackTrace();
 			Error error = new Error();
 			error.setCodigo(99);
-			error.setMensaje("Error al guardar:"+e.getMessage());
+			error.setMensaje("Error al guardar: "+e.getMessage());
 			return Response.status(Response.Status.OK).entity(error).build();
 		}
 	}
@@ -92,7 +92,7 @@ public class GClienteService {
 		return gCliente.listar();
 	}
 	@DELETE
-	@Path("EliminarC/{cedula}")
+	@Path("eliminarC/{cedula}")
 	public Response borrar(@PathParam("cedula") String cedula) {
 		boolean eliminado = gCliente.borrar(cedula);
 		if(eliminado) {
